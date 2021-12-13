@@ -7,13 +7,6 @@ import base64
 import hmac
 import json
 
-def check_data_exist(array):
-    for data in array:
-        if data == '' or data == None:
-            return False
-
-    return True
-
 def decrypt_data(keys, encrypts):
     decompress = None
 
@@ -84,9 +77,7 @@ def rest_bpjs(consid, secret, user_key, url, method, payload, timestamp):
 
 def bridging(host, consid, secret, user_key, is_encrypt, endpoint, method = 'get', payload = {}):
     url = fixed_url(host) + "/" + fixed_url(endpoint)
-
     timestamp = str(int(datetime.today().timestamp()))
-
     res = rest_bpjs(consid, secret, user_key, url, method, payload, timestamp)
 
     if res.status_code != 404:
