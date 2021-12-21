@@ -1,6 +1,6 @@
 ## pybpjs
 
-Aplikasi Python yang digunakan untuk menangani proses dekripsi respon data dari bridging BPJS VCLAIM REST 2.0 (Encrypted Version). Support VCLAIM v1 dan API JKN (Antrean RS).
+Aplikasi Python yang digunakan untuk menangani proses dekripsi respon data dari bridging BPJS VClaim v2.0 (Encrypted Version). Support VClaim v1 / v1.1 dan Antrean RS.
 
 ## Kebutuhan
 
