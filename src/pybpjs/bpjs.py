@@ -50,35 +50,55 @@ def rest_bpjs(consid, secret, user_key, url, method, payload, timestamp):
         payload = 0
     else:
         payload = json.dumps(payload)
-    
-    if method.lower() == 'post':
-        if payload == 0:
-            res = requests.post(url, headers=headers)
-        else:
-            res = requests.post(url, data=payload, headers=headers)
 
-    elif method.lower() == 'put':
-        if payload == 0:
-            res = requests.put(url, headers=headers)
+    try:
+        if method.lower() == 'post':
+            if payload == 0:
+                res = requests.post(url, headers=headers)
+            else:
+                res = requests.post(url, data=payload, headers=headers)
+
+        elif method.lower() == 'put':
+            if payload == 0:
+                res = requests.put(url, headers=headers)
+            else:
+                res = requests.put(url, data=payload, headers=headers)
+        elif method.lower() == 'delete':
+            if payload == 0:
+                res = requests.delete(url, headers=headers)
+            else:
+                res = requests.delete(url, data=payload, headers=headers)
         else:
-            res = requests.put(url, data=payload, headers=headers)
-    elif method.lower() == 'delete':
-        if payload == 0:
-            res = requests.delete(url, headers=headers)
-        else:
-            res = requests.delete(url, data=payload, headers=headers)
-    else:
-        if payload == 0:
-            res = requests.get(url, headers=headers)
-        else:
-            res = requests.get(url, data=payload, headers=headers)
+            if payload == 0:
+                res = requests.get(url, headers=headers)
+            else:
+                res = requests.get(url, data=payload, headers=headers)
+
+    except:
+        res = {
+            'metaData': {
+                'code': "400",
+                'message': "Ada kesalahan request data, cek kembali",
+            },
+            'response': None
+        }
 
     return res
 
-def bridging(host, consid, secret, user_key, is_encrypt, endpoint, method = 'get', payload = {}):
+def bridging(credential, endpoint, method = 'get', payload = {}):
+    host = credential['host']
+    consid = credential['consid']
+    secret = credential['secret']
+    user_key = credential['user_key']
+    is_encrypt = credential['is_encrypt']
+
     url = fixed_url(host) + "/" + fixed_url(endpoint)
     timestamp = str(int(datetime.today().timestamp()))
+
     res = rest_bpjs(consid, secret, user_key, url, method, payload, timestamp)
+
+    if not hasattr(res, 'status_code'):
+        return res
 
     if res.status_code != 404:
         if check_json(res.text) == True:
