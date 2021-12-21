@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
 	name="pybpjs",
-	version="0.0.3",
+	version="0.0.4",
 	author="Moriz",
 	author_email="morizbebenk@gmail.com",
-	description="Aplikasi Python yang digunakan untuk menangani proses dekripsi respon data dari bridging BPJS VCLAIM REST 2.0 (Encrypted Version). Support VCLAIM v1 dan API JKN (Antrean RS).",
+	description="Aplikasi Python yang digunakan untuk menangani proses dekripsi respon data dari bridging BPJS VClaim v2.0 (Encrypted Version). Support VClaim v1 / v1.1 dan Antrean RS.",
 	long_description=long_description,
 	long_description_content_type="text/markdown",
 	url="https://github.com/morizbebenk/pybpjs",
@@ -28,6 +28,6 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
     license="MIT",
-    keywords="bpjs vclaim vclaim-rest vclaim-encrypted ",
+    keywords="bpjs vclaim vclaim-rest vclaim-encrypted",
     install_requires=["lzstring", "requests", "pycryptodome"]
 )
