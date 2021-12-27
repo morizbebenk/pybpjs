@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
 	name="pybpjs",
-	version="0.0.4",
+	version="0.0.5",
 	author="Moriz",
 	author_email="morizbebenk@gmail.com",
 	description="Aplikasi Python yang digunakan untuk menangani proses dekripsi respon data dari bridging BPJS VClaim v2.0 (Encrypted Version). Support VClaim v1 / v1.1 dan Antrean RS.",
@@ -23,6 +23,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10"
     ],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
