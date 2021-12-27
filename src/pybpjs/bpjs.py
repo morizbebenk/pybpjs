@@ -137,7 +137,7 @@ def bridging(credential, endpoint, method = 'get', payload = {}):
                 return data
 
             if int(is_encrypt) == 1:
-                url_not_encrypt = ["SEP/2.0/delete"]
+                url_not_encrypt = ["SEP/2.0/delete", "SEP/2.0/update"]
                 status_encrypt = True
 
                 for unc in url_not_encrypt:
